@@ -177,10 +177,7 @@ namespace LibALXR
         D3D12,
         [EnumMember(Value = "D3D11")]
         D3D11,
-        // GL(ES) is barely supported, most likely going to be removed in future.
-        OpenGLES,
-        OpenGL,
-        ApiCount = OpenGL
+        ApiCount = D3D11
     }
 
     public enum ALXRDecoderType : uint
