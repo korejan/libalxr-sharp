@@ -49,6 +49,14 @@ namespace LibALXR
         TypeCount
     };
 
+    [Flags]
+    public enum ALXRFaceTrackingDataSourceFlags : uint
+    {
+        VisualSource = (1u << 0),
+        AudioSource = (1u << 1),
+        AnySource = VisualSource | AudioSource
+    };
+
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct ALXRFacialEyePacket
     {

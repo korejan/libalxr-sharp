@@ -314,6 +314,8 @@ namespace LibALXR
         [MarshalAs(UnmanagedType.U4)]
         public ALXRPassthroughMode passthroughMode;
 
+        [MarshalAs(UnmanagedType.U4)]
+        public uint faceTrackingDataSources;
         [MarshalAs(UnmanagedType.U1)]
         public ALXRFacialExpressionType facialTracking;
         [MarshalAs(UnmanagedType.U1)]

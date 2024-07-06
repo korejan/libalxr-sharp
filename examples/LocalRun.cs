@@ -135,6 +135,7 @@ namespace LibALXR.examples
                 graphicsApi = config.GraphicsApi,
                 decoderType = ALXRDecoderType.D311VA,
                 displayColorSpace = ALXRColorSpace.Default,
+                faceTrackingDataSources = (uint)ALXRFaceTrackingDataSourceFlags.VisualSource,
                 facialTracking = config.FacialTrackingExt,
                 eyeTracking = config.EyeTrackingExt,
                 trackingServerPortNo = LibALXR.TrackingServerDefaultPortNo,
