@@ -314,6 +314,13 @@ namespace LibALXR
         [MarshalAs(UnmanagedType.U4)]
         public ALXRPassthroughMode passthroughMode;
 
+        //
+        // internalDataPath - Optional root path of data files, if null all paths will be relative, 
+        // for android builds this could be the same as ANativeActivity::internalDataPath
+        //
+        public IntPtr internalDataPath;
+        public string InternalDataPath => Marshal.PtrToStringAnsi(internalDataPath);
+
         [MarshalAs(UnmanagedType.U4)]
         public uint faceTrackingDataSources;
         [MarshalAs(UnmanagedType.U1)]
