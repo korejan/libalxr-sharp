@@ -263,6 +263,25 @@ namespace LibALXR
     }
 
     [StructLayout(LayoutKind.Sequential)]
+    public struct ALXRHiddenAreaMesh
+    {
+        public IntPtr vertices; // const ALXRVector2f*
+        [MarshalAs(UnmanagedType.U4)]
+        public uint vertexCount;
+        public IntPtr indices; // const uint32_t*
+        [MarshalAs(UnmanagedType.U4)]
+        public uint indexCount;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct ALXRViewConfig
+    {
+        public ALXREyeInfo eyeInfo;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
+        public ALXRHiddenAreaMesh[] hidden_area_meshes;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
     public struct ALXRVersion
     {
         [MarshalAs(UnmanagedType.U4)]
@@ -356,6 +375,10 @@ namespace LibALXR
         // Caution: May not be compatible with all runtimes and could lead to unexpected behavior.
         [MarshalAs(UnmanagedType.U1)]
         public bool simulateHeadless;
+        [MarshalAs(UnmanagedType.U1)]
+        public bool noVisibilityMasks;
+        [MarshalAs(UnmanagedType.U1)]
+        public bool noMultiviewRendering;
 
 #if XR_USE_PLATFORM_ANDROID
         public IntPtr applicationVM;
@@ -410,6 +433,8 @@ namespace LibALXR
         public ALXRTrackingSpace trackingSpaceType;
         public ALXRRenderConfig renderConfig;
         public ALXRDecoderConfig decoderConfig;
+        [MarshalAs(UnmanagedType.U1)]
+        public bool clientPrediction;
     }
 
     [StructLayout(LayoutKind.Sequential)]

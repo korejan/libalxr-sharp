@@ -20,6 +20,8 @@ namespace LibALXR
         HTC,
         [EnumMember(Value = "Pico")] // future support.
         Pico,
+        [EnumMember(Value = "Android")]
+        Android, // XR_ANDROID_face_tracking
         [EnumMember(Value = "Auto")]
         Auto,
         TypeCount
@@ -33,6 +35,8 @@ namespace LibALXR
         FBEyeTrackingSocial,
         [EnumMember(Value = "ExtEyeGazeInteraction")]
         ExtEyeGazeInteraction,
+        [EnumMember(Value = "AndroidAvatarEyes")]
+        AndroidAvatarEyes,
         [EnumMember(Value = "Auto")]
         Auto,
         TypeCount
