@@ -8,16 +8,10 @@ namespace LibALXR
     {
         public const ushort TrackingServerDefaultPortNo = 49192;
 
-        public const string DllName = "alxr_engine.dll";
+        public const string DllName = "alxr_engine";
 
         public const CallingConvention ALXRCallingConvention = CallingConvention.Cdecl;
 
-        public static bool AddDllSearchPath(string dllDir)
-        {
-            if (!Directory.Exists(dllDir))
-                return false;
-            return SetDllDirectory(dllDir);
-        }
 
         [DllImport(DllName, CallingConvention = ALXRCallingConvention)]
         public static extern bool alxr_init(ref ALXRClientCtx ctx, out ALXRSystemProperties systemProperties);
@@ -64,8 +58,6 @@ namespace LibALXR
         [DllImport(DllName, CharSet = CharSet.Auto, SetLastError = true, CallingConvention = ALXRCallingConvention)]
         public static extern void alxr_set_log_custom_output(ALXRLogOptions options, ALXRLogOutputFn outputFn);
 
-        [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-        private static extern bool SetDllDirectory(string lpPathName);
 
     }
     #endregion

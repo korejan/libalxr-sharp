@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Threading;
+using System.Runtime.InteropServices;
+using System.Reflection;
 
 namespace LibALXR.examples
 {
@@ -29,6 +31,17 @@ namespace LibALXR.examples
             public bool SimulateHeadless { get; set; } = true;
 
             public bool VerboseLogs { get; set; } = false;
+
+            public IntPtr Resolver(string libraryName, Assembly assembly, DllImportSearchPath? searchPath)
+            {
+                IntPtr handle = IntPtr.Zero;
+                var fullPath = Path.Combine(DLLDir, libraryName);
+                if (NativeLibrary.TryLoad(fullPath, out handle))
+                    return handle;
+                if (NativeLibrary.TryLoad(libraryName, out handle))
+                    return handle;
+                return IntPtr.Zero;
+            }
         }
 
         public static void Run(Context runCtx)
@@ -39,11 +52,7 @@ namespace LibALXR.examples
                 return;
             }
 
-            if (!LibALXR.AddDllSearchPath(runCtx.DLLDir))
-            {
-                Console.Error.WriteLine($"[libalxr] unmanaged library path to search failed to be set.");
-                return;
-            }
+            NativeLibrary.SetDllImportResolver(typeof(Local).Assembly, runCtx.Resolver);
 
             try
             {
