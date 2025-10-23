@@ -324,6 +324,7 @@ namespace LibALXR
         public RequestIDRDelegate requestIDR;
 
         public ALXRVersion firmwareVersion;
+        public ALXRVersion xrApiVersion;
         [MarshalAs(UnmanagedType.U4)]
         public ALXRGraphicsApi graphicsApi;
         [MarshalAs(UnmanagedType.U4)]

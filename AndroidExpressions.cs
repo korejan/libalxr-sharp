@@ -65,7 +65,12 @@
         Upper_Lid_Raiser_R = 60,
         Upper_Lip_Raiser_L = 61,
         Upper_Lip_Raiser_R = 62,
-        Count = 63,
+        Tongue_Out = 63,
+        Tongue_Left = 64,
+        Tongue_Right = 65,
+        Tongue_Up = 66,
+        Tongue_Down = 67,
+        Count = 68,
     }
 
     public enum XrEyeStateANDROID : Int32

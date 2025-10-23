@@ -35,8 +35,8 @@ namespace LibALXR
         FBEyeTrackingSocial,
         [EnumMember(Value = "ExtEyeGazeInteraction")]
         ExtEyeGazeInteraction,
-        [EnumMember(Value = "AndroidAvatarEyes")]
-        AndroidAvatarEyes,
+        [EnumMember(Value = "AndroidEyeTracking")]
+        AndroidEyeTracking,
         [EnumMember(Value = "Auto")]
         Auto,
         TypeCount
