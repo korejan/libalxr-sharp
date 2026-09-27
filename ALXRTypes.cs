@@ -230,6 +230,7 @@ namespace LibALXR
         None = 0,
         BlendLayer,
         MaskLayer,
+        TypeCount
     }
 
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
@@ -300,7 +301,7 @@ namespace LibALXR
         [UnmanagedFunctionPointer(ALXRCallingConvention)]
         public delegate void InputSendDelegate(ref ALXRTrackingInfo data);
         [UnmanagedFunctionPointer(ALXRCallingConvention)]
-        public delegate void ViewsConfigSendDelegate(ref ALXREyeInfo eyeInfo);
+        public delegate void ViewsConfigSendDelegate(ref ALXRViewConfig viewConfig);
         [UnmanagedFunctionPointer(ALXRCallingConvention)]
         public delegate ulong PathStringToHashDelegate(string path);
         [UnmanagedFunctionPointer(ALXRCallingConvention)]
@@ -309,6 +310,8 @@ namespace LibALXR
         public delegate void VideoErrorReportSendDelegate();
         [UnmanagedFunctionPointer(ALXRCallingConvention)]
         public delegate void BatterySendDelegate(ulong device_path, float gauge_value, bool is_plugged);
+        [UnmanagedFunctionPointer(ALXRCallingConvention)]
+        public delegate void UserPresenceSendDelegate([MarshalAs(UnmanagedType.U1)] bool isPresent);
         [UnmanagedFunctionPointer(ALXRCallingConvention)]
         public delegate void SetWaitingNextIDRDelegate(bool waiting);
         [UnmanagedFunctionPointer(ALXRCallingConvention)]
@@ -320,6 +323,7 @@ namespace LibALXR
         public TimeSyncSendDelegate timeSyncSend;
         public VideoErrorReportSendDelegate videoErrorReportSend;
         public BatterySendDelegate batterySend;
+        public UserPresenceSendDelegate userPresenceSend; // optional, may be null
         public SetWaitingNextIDRDelegate setWaitingNextIDR;
         public RequestIDRDelegate requestIDR;
 

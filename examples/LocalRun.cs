@@ -134,11 +134,12 @@ namespace LibALXR.examples
             return new ALXRClientCtx
             {
                 inputSend = (ref ALXRTrackingInfo data) => { },
-                viewsConfigSend = (ref ALXREyeInfo eyeInfo) => { },
+                viewsConfigSend = (ref ALXRViewConfig viewConfig) => { },
                 pathStringToHash = (path) => { return (ulong)path.GetHashCode(); },
                 timeSyncSend = (ref ALXRTimeSync data) => { },
                 videoErrorReportSend = () => { },
                 batterySend = (a, b, c) => { },
+                userPresenceSend = isPresent => { },
                 setWaitingNextIDR = a => { },
                 requestIDR = () => { },
                 graphicsApi = config.GraphicsApi,
